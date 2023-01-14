@@ -28,6 +28,9 @@ import { Poll } from "@prisma/client";
 
 const receiver = new ExpressReceiver({
   signingSecret: process.env.SLACK_SIGNING_SECRET as string,
+  // Note: this prolly does not work
+  socketMode: true,
+  appToken: process.env.APP_TOKEN,
 });
 
 receiver.router.post("/create", express.json(), async (req, res) => {
